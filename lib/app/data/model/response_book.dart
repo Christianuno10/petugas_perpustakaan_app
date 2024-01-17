@@ -3,9 +3,10 @@
 
 class ResponeBook {
   ResponeBook({
-      this.status,
-      this.message,
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   ResponeBook.fromJson(dynamic json) {
     status = json['status'];
@@ -30,7 +31,6 @@ class ResponeBook {
     }
     return map;
   }
-
 }
 
 /// id : 1
@@ -45,15 +45,16 @@ class ResponeBook {
 
 class DataBook {
   DataBook({
-      this.id,
-      this.kategoriId,
-      this.judul,
-      this.penulis,
-      this.penerbit,
-      this.tahunTerbit,
-      this.createdAt,
-      this.updatedAt,
-      this.kategori,});
+    this.id,
+    this.kategoriId,
+    this.judul,
+    this.penulis,
+    this.penerbit,
+    this.tahunTerbit,
+    this.createdAt,
+    this.updatedAt,
+    this.kategori,
+  });
 
   DataBook.fromJson(dynamic json) {
     id = json['id'];
@@ -64,7 +65,8 @@ class DataBook {
     tahunTerbit = json['tahun_terbit'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    kategori = json['kategori'] != null ? Kategori.fromJson(json['kategori']) : null;
+    kategori =
+        json['kategori'] != null ? Kategori.fromJson(json['kategori']) : null;
   }
   int? id;
   int? kategoriId;
@@ -91,7 +93,6 @@ class DataBook {
     }
     return map;
   }
-
 }
 
 /// id : 1
@@ -99,8 +100,9 @@ class DataBook {
 
 class Kategori {
   Kategori({
-      this.id, 
-      this.nama,});
+    this.id,
+    this.nama,
+  });
 
   Kategori.fromJson(dynamic json) {
     id = json['id'];
@@ -115,5 +117,4 @@ class Kategori {
     map['nama'] = nama;
     return map;
   }
-
 }
