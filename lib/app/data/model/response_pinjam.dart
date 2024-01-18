@@ -2,13 +2,13 @@
 /// message : "success"
 /// data : [{"id":1,"user_id":2,"book_id":1,"tanggal_pinjam":"2024-01-01 00:00:00","tanggal_kembali":"2024-01-10 00:00:00","status":"DIPINJAM","created_at":"2024-01-09T06:09:06.000000Z","updated_at":"2024-01-09T06:09:06.000000Z","user":{"id":2,"username":"said","nama":"said","telp":"085","alamat":"alamat","role":"PEMINJAM","created_at":"2024-01-09T05:36:44.000000Z","updated_at":"2024-01-09T05:36:44.000000Z"},"book":{"id":1,"kategori_id":1,"judul":"Belajar mengenal angka","penulis":"kusnaidi","penerbit":"PT alangka","tahun_terbit":2024,"created_at":"2024-01-09T05:43:09.000000Z","updated_at":"2024-01-09T05:43:09.000000Z"}}]
 
-class ResponsePinjam {
-  ResponsePinjam({
-      this.status, 
-      this.message, 
-      this.data,});
+class Responpinjam {
+  Responpinjam({
+    this.status,
+    this.message,
+    this.data,});
 
-  ResponsePinjam.fromJson(dynamic json) {
+  Responpinjam.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
@@ -18,7 +18,7 @@ class ResponsePinjam {
       });
     }
   }
-  int? status;
+  num? status;
   String? message;
   List<DataPinjam>? data;
 
@@ -47,16 +47,16 @@ class ResponsePinjam {
 
 class DataPinjam {
   DataPinjam({
-      this.id, 
-      this.userId, 
-      this.bookId, 
-      this.tanggalPinjam, 
-      this.tanggalKembali, 
-      this.status, 
-      this.createdAt, 
-      this.updatedAt, 
-      this.user, 
-      this.book,});
+    this.id,
+    this.userId,
+    this.bookId,
+    this.tanggalPinjam,
+    this.tanggalKembali,
+    this.status,
+    this.createdAt,
+    this.updatedAt,
+    this.user,
+    this.book,});
 
   DataPinjam.fromJson(dynamic json) {
     id = json['id'];
@@ -70,9 +70,9 @@ class DataPinjam {
     user = json['user'] != null ? User.fromJson(json['user']) : null;
     book = json['book'] != null ? Book.fromJson(json['book']) : null;
   }
-  int? id;
-  int? userId;
-  int? bookId;
+  num? id;
+  num? userId;
+  num? bookId;
   String? tanggalPinjam;
   String? tanggalKembali;
   String? status;
@@ -113,14 +113,14 @@ class DataPinjam {
 
 class Book {
   Book({
-      this.id, 
-      this.kategoriId, 
-      this.judul, 
-      this.penulis, 
-      this.penerbit, 
-      this.tahunTerbit, 
-      this.createdAt, 
-      this.updatedAt,});
+    this.id,
+    this.kategoriId,
+    this.judul,
+    this.penulis,
+    this.penerbit,
+    this.tahunTerbit,
+    this.createdAt,
+    this.updatedAt,});
 
   Book.fromJson(dynamic json) {
     id = json['id'];
@@ -132,12 +132,12 @@ class Book {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-  int? id;
-  int? kategoriId;
+  num? id;
+  num? kategoriId;
   String? judul;
   String? penulis;
   String? penerbit;
-  int? tahunTerbit;
+  num? tahunTerbit;
   String? createdAt;
   String? updatedAt;
 
@@ -167,14 +167,14 @@ class Book {
 
 class User {
   User({
-      this.id, 
-      this.username, 
-      this.nama, 
-      this.telp, 
-      this.alamat, 
-      this.role, 
-      this.createdAt, 
-      this.updatedAt,});
+    this.id,
+    this.username,
+    this.nama,
+    this.telp,
+    this.alamat,
+    this.role,
+    this.createdAt,
+    this.updatedAt,});
 
   User.fromJson(dynamic json) {
     id = json['id'];
@@ -186,7 +186,7 @@ class User {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-  int? id;
+  num? id;
   String? username;
   String? nama;
   String? telp;
@@ -208,4 +208,4 @@ class User {
     return map;
   }
 
-}
+  }

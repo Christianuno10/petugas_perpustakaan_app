@@ -2,18 +2,18 @@
 /// message : "Login Success"
 /// data : {"id":1,"username":"testing","nama":"Romli","telp":"085334","alamat":"Solo","role":"PETUGAS","created_at":"2024-01-09T01:55:16.000000Z","updated_at":"2024-01-09T01:55:16.000000Z"}
 
-class ResponseLogin {
-  ResponseLogin({
-      this.status,
-      this.message,
-      this.data,});
+class Responlogin {
+  Responlogin({
+    this.status,
+    this.message,
+    this.data,});
 
-  ResponseLogin.fromJson(dynamic json) {
+  Responlogin.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
     data = json['data'] != null ? DataLogin.fromJson(json['data']) : null;
   }
-  int? status;
+  num? status;
   String? message;
   DataLogin? data;
 
@@ -40,14 +40,14 @@ class ResponseLogin {
 
 class DataLogin {
   DataLogin({
-      this.id,
-      this.username,
-      this.nama,
-      this.telp,
-      this.alamat,
-      this.role,
-      this.createdAt,
-      this.updatedAt,});
+    this.id,
+    this.username,
+    this.nama,
+    this.telp,
+    this.alamat,
+    this.role,
+    this.createdAt,
+    this.updatedAt,});
 
   DataLogin.fromJson(dynamic json) {
     id = json['id'];
@@ -59,7 +59,7 @@ class DataLogin {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-  int? id;
+  num? id;
   String? username;
   String? nama;
   String? telp;
@@ -80,5 +80,4 @@ class DataLogin {
     map['updated_at'] = updatedAt;
     return map;
   }
-
-}
+  }

@@ -1,11 +1,13 @@
-import 'package:dio/dio.dart' as dio;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
-import 'package:petugas_perpusatakaan_app/app/data/constant/endpoint.dart';
-import 'package:petugas_perpusatakaan_app/app/data/provider/api_provider.dart';
-import 'package:petugas_perpusatakaan_app/app/data/provider/storage_provider.dart';
-import 'package:petugas_perpusatakaan_app/app/routes/app_pages.dart';
+import 'package:peminjam_perpustakaan_app/app/data/constant/endpoint.dart';
+import 'package:peminjam_perpustakaan_app/app/data/provider/api_provider.dart';
+import 'package:peminjam_perpustakaan_app/app/data/provider/storage_provider.dart';
+import 'package:peminjam_perpustakaan_app/app/routes/app_pages.dart';
+
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -23,10 +25,9 @@ class LoginController extends GetxController {
   void onReady() {
     super.onReady();
     String status = StorageProvider.read(StorageKey.status);
-    if(status=="logged"){
-      Get.offNamed(Routes.HOME);
+    if(status == "logged"){
+      Get.offAllNamed(Routes.HOME);
     }
-
   }
 
   @override
@@ -39,14 +40,17 @@ class LoginController extends GetxController {
   final loadingLogin = false.obs;
   login() async {
     loadingLogin(true);
-    try{
+    try {
       FocusScope.of(Get.context!).unfocus();
       formKey.currentState?.save();
-      if (formKey.currentState!.validate()){
+      if (formKey.currentState!.validate()) {
         final response = await ApiProvider.instance().post(Endpoint.login,
             data: dio.FormData.fromMap(
-                {"username": usernameController.text.toString(), "password": passwordController.text.toString()}));
-        if (response.statusCode == 200){
+                {
+                  "username": usernameController.text.toString(),
+                  "password": passwordController.text.toString()
+                }));
+        if (response.statusCode == 200) {
           await StorageProvider.write(StorageKey.status, "logged");
           Get.offAllNamed(Routes.HOME);
         } else {
@@ -54,7 +58,7 @@ class LoginController extends GetxController {
         }
       }
       loadingLogin(false);
-    } on dio.DioException catch (e){
+    } on dio.DioException catch (e) {
       loadingLogin(false);
       Get.snackbar("Sorry", e.message ?? "", backgroundColor: Colors.red);
     } catch (e) {
@@ -63,4 +67,4 @@ class LoginController extends GetxController {
       throw Exception('Error: $e');
     }
   }
-}
+    }
